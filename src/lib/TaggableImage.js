@@ -65,7 +65,6 @@ export const TaggableImage = ({src, tags,
     // Get image size and the position.
     const imageDetails = imageRef.current.getBoundingClientRect()
 
-    // Create new tag on the image only if newTag exists.
     if ((markedCoordinatesToWindow && newTag && newTag.length > 0 && !allowEmptyTags) || (markedCoordinatesToWindow && allowEmptyTags)) {
         // Calculate the position of the tag relatively to the image.
         const x = markedCoordinatesToWindow.x - imageDetails.left
