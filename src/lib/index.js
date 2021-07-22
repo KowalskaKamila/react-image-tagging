@@ -1,2 +1,2 @@
-import ImageTagging from "./ImageTagging";
-export { ImageTagging };
+import TaggableImage from "./TaggableImage";
+export { TaggableImage };

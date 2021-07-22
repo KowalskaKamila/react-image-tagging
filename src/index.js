@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { render } from "react-dom";
 import styled from 'styled-components';
 
-import { ImageTagging } from "./lib/ImageTagging.js";
+import { TaggableImage } from "./lib/TaggableImage.js";
 
 const Row = styled.div`
   display: flex;
@@ -46,8 +46,8 @@ const App = () => {
       </Row>
       <p><BoldText> Step 2.</BoldText> Click on the image to set the location of the tag.</p>
       <Container> 
-        <ImageTagging 
-          imageURL = {img} 
+        <TaggableImage 
+          src = {img} 
           tags = {myTags} 
           newTag = {tagText} 
           onTagAdd= {handleAddTag}

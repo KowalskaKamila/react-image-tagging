@@ -54,8 +54,8 @@ const RemoveIcon = styled.div`
   }
 `
 
-export const ImageTagging = ({imageURL, tags=[],
-                            newTag, tagColor='white', tagTextStyle={}, onTagAdd, onTagRemove,
+export const TaggableImage = ({src, tags=[],
+                            newTag, tagColor='white', tagTextStyle={}, onTagAdd, onTagRemove, alt='',
                             removable=true, hoverDeleteIconColor='black', showOnHover=false, allowEmptyTags=true}) => {
   const imageRef = useRef();
   const [ markedCoordinatesToWindow, setMarkedCoordinatesToWindow ] = useState(null)
@@ -83,7 +83,7 @@ export const ImageTagging = ({imageURL, tags=[],
         const newTagData = { x: normalizedXPosition, y: normalizedYPosition, content:newTag.trim(), positionX: positionXInPercentage, positionY: positionYInPercentage }
         onTagAdd(newTagData)
     }
-  }, [imageRef, markedCoordinatesToWindow, imageURL])
+  }, [imageRef, markedCoordinatesToWindow, src])
 
   function removeTag(tagToRemove) {
     onTagRemove(tagToRemove)
@@ -93,7 +93,8 @@ export const ImageTagging = ({imageURL, tags=[],
     <Wrapper>
       <Image 
         ref={imageRef} 
-        src={imageURL} 
+        src={src} 
+        alt={alt}
         width='100%'
         height='auto'
         onMouseOver={() => showOnHover && setHideTags(false)} 
@@ -126,8 +127,9 @@ export const ImageTagging = ({imageURL, tags=[],
   )
 }
 
-ImageTagging.propTypes = {
-  imageURL: PropTypes.string.isRequired,
+TaggableImage.propTypes = {
+  src: PropTypes.string.isRequired,
+  alt: PropTypes.string,
   tags: PropTypes.array, 
   newTag: PropTypes.string.isRequired,
   onTagAdd: PropTypes.func,
