@@ -54,9 +54,9 @@ const RemoveIcon = styled.div`
   }
 `
 
-export const TaggableImage = ({src, tags=[],
-                            newTag, tagColor='white', tagTextStyle={}, onTagAdd, onTagRemove, alt='',
-                            removable=true, hoverDeleteIconColor='black', showOnHover=false, allowEmptyTags=true}) => {
+export const TaggableImage = ({src, tags,
+                            newTag, tagColor='#ffffff', tagTextStyle={}, onTagAdd, onTagRemove, alt='',
+                            removable=true, hoverDeleteIconColor='#000000', showOnHover=false, allowEmptyTags=true}) => {
   const imageRef = useRef();
   const [ markedCoordinatesToWindow, setMarkedCoordinatesToWindow ] = useState(null)
   const [ hideTags, setHideTags ] = useState(showOnHover)
@@ -130,9 +130,9 @@ export const TaggableImage = ({src, tags=[],
 TaggableImage.propTypes = {
   src: PropTypes.string.isRequired,
   alt: PropTypes.string,
-  tags: PropTypes.array, 
-  newTag: PropTypes.string.isRequired,
-  onTagAdd: PropTypes.func.isRequired,
+  tags: PropTypes.array.isRequired, 
+  newTag: PropTypes.string,
+  onTagAdd: PropTypes.func,
   onTagRemove: PropTypes.func,
   tagColor: PropTypes.string, 
   tagTextStyle: PropTypes.object, 
