@@ -132,7 +132,7 @@ TaggableImage.propTypes = {
   alt: PropTypes.string,
   tags: PropTypes.array, 
   newTag: PropTypes.string.isRequired,
-  onTagAdd: PropTypes.func,
+  onTagAdd: PropTypes.func.isRequired,
   onTagRemove: PropTypes.func,
   tagColor: PropTypes.string, 
   tagTextStyle: PropTypes.object, 
