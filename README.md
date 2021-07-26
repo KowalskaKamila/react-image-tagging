@@ -59,7 +59,7 @@ const ImageTaggingExample = () => {
 | --- | --- | --- | --- |
 | `src` | string | Image src attribute | **Required** |
 | `alt` | string | Image alt attribute | |
-| `tags` | array | Array of tags | **Required** |
+| `tags` | array[object] | Array of tags | **Required** |
 | `newTag` | string | Text of new tag | |
 | `onTagAdd` | function | Returns new added tag | |
 | `allowAddingTags` | boolean | Allow to add new tags | `true` |
