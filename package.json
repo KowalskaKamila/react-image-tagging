@@ -4,7 +4,8 @@
   "main": "dist/index.js",
   "module": "dist/index.js",
   "files": [
-    "dist"
+    "dist",
+    "README.md"
   ],
   "scripts": {
     "start": "react-scripts start",
@@ -14,7 +15,6 @@
     "build": "rimraf dist && NODE_ENV=production babel src/lib --out-dir dist --copy-files --ignore __tests__,spec.js,test.js,__snapshots__"
   },
   "devDependencies": {
-    "babel-cli": "^6.26.0",
     "babel-preset-react-app": "^10.0.0",
     "react": "^17.0.2",
     "react-dom": "^17.0.2",
@@ -34,6 +34,7 @@
     ]
   },
   "dependencies": {
+    "@babel/cli": "^7.14.8",
     "prop-types": "^15.7.2",
     "react-icons": "^4.2.0",
     "styled-components": "^5.3.0"

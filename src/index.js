@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { render } from "react-dom";
 import styled from 'styled-components';
 
-import { TaggableImage } from "./lib/TaggableImage.js";
+import TaggableImage from "./lib/TaggableImage.js";
 
 const Row = styled.div`
   display: flex;
@@ -19,7 +19,7 @@ const BoldText = styled.span`
   font-size: 18px;
 `
 
-const App = () => {
+const Example = () => {
   const img = "https://www.kamilaphotoart.com/wp-content/uploads/2019/06/IMG_7870.jpg"
   const [ myTags, setMyTag ] = useState([
     {x: 0.1, y: 0.6, content: "RodeoBeach", positionX: "13.861040276661893%", positionY: "62.207550630092484%"},
@@ -52,9 +52,10 @@ const App = () => {
           newTag = {tagText} 
           onTagAdd= {handleAddTag}
           onTagRemove= {handleRemoveTag}
+          allowEmptyTags={false}
         />
       </Container>
     </div>
   )
 }
-render(<App />, document.getElementById("root"));
+render(<Example />, document.getElementById("root"));

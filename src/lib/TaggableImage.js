@@ -36,6 +36,7 @@ const TagText = styled.p`
   text-overflow: ellipsis; 
   max-width: 120px;
   padding-right: 6px;
+  margin: auto;
   cursor: default;
   font-family: Verdana, Geneva, Tahoma, sans-serif; 
   font-size: 13px;
@@ -47,16 +48,16 @@ const RemoveIcon = styled.div`
   display: flex;
   align-items: center;
   justify-content: center;
-  color: grey;
+  ${props => props.color && `color: ${props.color};` }
 
   &:hover {
-    ${props => props.color && `color: ${props.color};` }
+    ${props => props.hoverColor && `color: ${props.hoverColor};` }
   }
 `
 
-export const TaggableImage = ({src, tags,
-                            newTag, tagColor='#ffffff', tagTextStyle={}, onTagAdd, onTagRemove, alt='',
-                            removable=true, hoverDeleteIconColor='#000000', showOnHover=false, allowEmptyTags=true}) => {
+const TaggableImage = ({src, tags, newTag='', tagColor='#ffffff', tagTextStyle={}, onTagAdd, onTagRemove, alt='',
+                      removable=true, deleteIconColor='#808080', hoverDeleteIconColor='#000000', showOnHover=false, 
+                      allowEmptyTags=false, allowAddingTags=true}) => {
   const imageRef = useRef();
   const [ markedCoordinatesToWindow, setMarkedCoordinatesToWindow ] = useState(null)
   const [ hideTags, setHideTags ] = useState(showOnHover)
@@ -65,7 +66,8 @@ export const TaggableImage = ({src, tags,
     // Get image size and the position.
     const imageDetails = imageRef.current.getBoundingClientRect()
 
-    if ((markedCoordinatesToWindow && newTag && newTag.length > 0 && !allowEmptyTags) || (markedCoordinatesToWindow && allowEmptyTags)) {
+    if ((markedCoordinatesToWindow && newTag && newTag.length > 0 && allowAddingTags && !allowEmptyTags) || 
+        (markedCoordinatesToWindow && allowAddingTags && allowEmptyTags)) {
         // Calculate the position of the tag relatively to the image.
         const x = markedCoordinatesToWindow.x - imageDetails.left
         const y = markedCoordinatesToWindow.y - imageDetails.top
@@ -114,9 +116,10 @@ export const TaggableImage = ({src, tags,
             {removable &&
               <RemoveIcon 
                 onClick={() => removeTag(tag)} 
-                color={hoverDeleteIconColor}
+                hoverColor={hoverDeleteIconColor}
+                color={deleteIconColor}
               >
-                <BiX/>
+                <BiX size={16} style={{marginTop:2}}/>
               </RemoveIcon>
             } 
           </ImageTag>
@@ -130,6 +133,7 @@ TaggableImage.propTypes = {
   src: PropTypes.string.isRequired,
   alt: PropTypes.string,
   tags: PropTypes.array.isRequired, 
+  allowAddingTags: PropTypes.bool, 
   newTag: PropTypes.string,
   onTagAdd: PropTypes.func,
   onTagRemove: PropTypes.func,
@@ -137,6 +141,9 @@ TaggableImage.propTypes = {
   tagTextStyle: PropTypes.object, 
   removable: PropTypes.bool, 
   hoverDeleteIconColor: PropTypes.string, 
+  deleteIconColor: PropTypes.string,
   showOnHover: PropTypes.bool,
   allowEmptyTags: PropTypes.bool
 }
+
+export default TaggableImage;

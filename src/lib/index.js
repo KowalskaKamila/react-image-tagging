@@ -1,2 +1,2 @@
 import TaggableImage from "./TaggableImage";
-export { TaggableImage };
+export default TaggableImage;
