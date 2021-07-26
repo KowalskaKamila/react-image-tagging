@@ -5,7 +5,7 @@
 ## Installation
 
 ```
-npm install react-image-tagging
+npm i react-image-tagging
 ```
 
 ## Usage
