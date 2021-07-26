@@ -1,8 +1,21 @@
 {
   "name": "react-image-tagging",
-  "version": "0.1.0",
+  "version": "1.0.1",
   "main": "dist/index.js",
   "module": "dist/index.js",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/KowalskaKamila/react-image-tagging"
+  },
+  "homepage": "https://github.com/KowalskaKamila/react-image-tagging",
+  "keywords": [
+    "react",
+    "react-image-tagging",
+    "component",
+    "tag",
+    "react-component"
+  ],
   "files": [
     "dist",
     "README.md"
